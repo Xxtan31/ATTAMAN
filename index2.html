@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+            position: relative;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            background: url('path/to/photo.jpg') no-repeat center center/cover;
+            margin-bottom: 20px;
+        }
+        .rainbow-text {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .description {
+            margin: 20px 0;
+        }
+        .ui, .inner-ui {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .eye-icon {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        .eye-icon img {
+            width: 20px;
+            height: 20px;
+        }
+        .eye-icon span {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-pic"></div>
+        <div class="rainbow-text">ATTAMAN</div>
+        <div class="description">This is a description text.</div>
+        <div class="ui">
+            <div class="inner-ui">
+                <div id="discord-status">Discord status here</div>
+            </div>
+        </div>
+        <div class="eye-icon">
+            <img src="eye-icon.png" alt="Eye Icon">
+            <span id="view-count">0</span>
+        </div>
+    </div>
+    <script>
+        // Placeholder function to simulate Discord status fetching
+        function updateDiscordStatus() {
+            // Here you would fetch the real status from your server
+            document.getElementById('discord-status').innerText = 'Online';
+        }
+
+        // Increment view count in localStorage
+        function incrementViewCount() {
+            if (!localStorage.getItem('viewed')) {
+                let count = localStorage.getItem('viewCount') || 0;
+                count++;
+                localStorage.setItem('viewCount', count);
+                localStorage.setItem('viewed', 'true');
+            }
+            document.getElementById('view-count').innerText = localStorage.getItem('viewCount');
+        }
+
+        updateDiscordStatus();
+        incrementViewCount();
+    </script>
+</body>
+</html>
